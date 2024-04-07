@@ -74,8 +74,8 @@ else {
 
 if (this.cursor.up.isDown && this.player.body.touching.down){
     this.player.setVelocityY(-255)
-}
-if (this.enemyDirection === 'right') {
+    
+}if (this.enemyDirection === 'right') {
     this.enemy.setVelocityX(120)
     this.enemy.flipX = false;
     this.enemy.anims.play('runEnemy',true);
@@ -84,6 +84,12 @@ if (this.enemyDirection === 'right') {
     this.enemy.setVelocityX(-120)
     this.enemy.flipX = true;
     this.enemy.anims.play('runEnemy',true);
+}else {
+    this.enemy.setVelocityX(0)
+    this.enemy.anims.stop('run');
+    this.enemy.setTexture('enemy', 0);
+
+
 }
 
 
