@@ -39,7 +39,7 @@ export default class mainScene extends Phaser.Scene {
         this.physics.add.collider(this.player, this.platforms)
         this.physics.add.collider(this.player, this.ground)
         this.anims.create({
-            kay:'run',
+            key:'run',
             frames: this.anims.generateFrameNumbers('player', { start: 0, end: 7 }),
             frameRate: 10,
             repeat: -1
@@ -49,6 +49,10 @@ export default class mainScene extends Phaser.Scene {
         this.enemy.setBounce(0.2)
         this.physics.add.collider(this.enemy, this.platforms);
         this.physics.add.collider(this.enemy, this.ground); 
+        this.anims.create({
+            key: 'runEnemy',
+            frames: this.anims.generateFrameNumbers('enemy', {start: 0, end: 7 }),
+        })
         
     }
     update(){
@@ -90,6 +94,12 @@ if (this.cursor.up.isDown && this.player.body.touching.down){
     this.enemy.setTexture('enemy', 0);
 
 
+}
+
+if (this.enemy.body.blocked.right) {
+    this.enemyDirection = 'left';
+} else if (this.enemy.body.blocked.left) {
+    this.enemyDirection = 'right';
 }
 
 
